@@ -11,6 +11,7 @@ public class Project extends Canvas implements KeyListener, ActionListener {
     Animationsroboter robbi = new Animationsroboter (300,300);
 
     public void paint(Graphics stift) {
+        robbi.map(stift);
         robbi.zeichnen(stift);
     }
     public static void main(String[] args) {

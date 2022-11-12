@@ -3,12 +3,6 @@ public class Basisroboter {
     // Attribute
     private Vector p, v;
 
-
-    /*  Directions:
-            0
-        3       1
-            2
-     */
     private int direction = 0;
     private double moved;
     private boolean jumped;
@@ -46,6 +40,7 @@ public class Basisroboter {
             p = new Vector(p.getX(), GROUND_HEIGHT);
             v = new Vector(v.getX(), 0);
         }
+        direction = v.getX()>0 ?0:1;
     }
 
     public void move(double distance) {
@@ -58,13 +53,6 @@ public class Basisroboter {
         }
     }
 
-    public void moveDiagonal() {
-
-    }
-
-    public void Jump() {
-
-    }
 
     public int getX() {
         return (int) Math.round(p.getX());
