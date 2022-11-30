@@ -1,59 +1,53 @@
-public class Basisroboter {
-    public static final int GROUND_HEIGHT = Project.HEIGHT - 200;
-    // Attribute
-    private Vector p, v;
+public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielfigur kümmert
+    public static final int GROUND_HEIGHT = Project.HEIGHT - 200; //Bodenhöhe wird festgelegt
+    private Vector p, v; //Vectoren für p(Position) und v(Velocity) werden erschaffen
 
-    private int direction = 0;
-    private double moved;
-    private boolean jumped;
-    private boolean onGround;
+    private int direction = 0; //Die Richtung in die die Spielfigur guckt bekommt eine Variable um die Spielfigut später richtig zu zeichnen können
+    private double moved; // Variable für die Distanz der Bewegung (Wird beim KeyPressed Event verändert)
+    private boolean jumped; // Variable die den KeyPressed "Space", Springen weitergibt
+    private boolean onGround; // Boolean das speichert, ob die Figur auf den Boden ist
 
     // Konstruktor
-    public Basisroboter(int x, int y) {
-        p = new Vector(x, y);
-        v = new Vector();
+    public Basisroboter(int x, int y) { // Die Figur wird erstellt
+        p = new Vector(x, y); // der Positionsvektor mit der Position wird erstellt
+        v = new Vector(); // der Velocity Vektor mit einer Startgeschwindigkeit auf beiden Achsen von 0 wird erstellt
     }
 
-    // Methoden
-    public void gibInfo() {
-        System.out.print("Meine Position ist (" + p.getX() + "|" + p.getY() + ").");
+    public void update() { // Die Methode "update", sie updatet die Positions der Figur
+        Vector a = new Vector(0, 7); // ein Vector für die Beschleunigung wird erstellt, es gibt immer eine Gravität
+        if (moved != 0) { // falls die Figur sich nach rechts oder nach links bewegen soll
+            Vector movea = new Vector(moved, 0); //neuer Beschleunigungsvektor mit neuen Inputs
+            a = a.add(movea); // Der alte und neue werden addiert (.add)
+            moved = 0; // Bewegung wird wieder auf 0 gesetzt
+        }
+        if(jumped) { // falls die Figur springen soll
+            Vector jumpa = new Vector(0,-70); //neuer Beschleunigungsvektor mit Beschleunigung des Sprunges
+            a = a.add(jumpa); // Der alte und neue werden addiert (.add)
+            jumped = false; // Sprung wird wieder auf false gesetzt
+        }
+        Vector drag = v.mul(-0.1); // abhängig von der Geschwindigkeit wird ein Luftwiederstand hinzugefügt
+        a = a.add(drag); // dieser wird dem danach komplett geupdateten Beschleunigungs Veektor hinzugefügt
+        v = v.add(a); // Beschleunigung wird auf die Geschwindigkeit addiert
+        p = p.add(v); // Geschwindigkeit wird auf die Position addiert
+        onGround = p.getY() > GROUND_HEIGHT; // es wird gecheckt, ob der Spieler unter dem Boden ist
+        if (onGround) { // wenn die Figur auf dem Boden ist
+            p = new Vector(p.getX(), GROUND_HEIGHT); // dann kann sie nicht weiter runter und
+            v = new Vector(v.getX(), 0); // ihre Beschleunigung auf der Y-Achse wird gestoppt
+        }
+        direction = v.getX()>0 ?0:1; // die Richtung, in die er gucken soll, ist die Richtung in die er sich bewegt (positiv negativ / rechts links)
     }
 
-    public void update() {
-        Vector a = new Vector(0, 7); //Gravity
-        if (moved != 0) {
-            Vector movea = new Vector(moved, 0);
-            a = a.add(movea);
-            moved = 0;
-        }
-        if(jumped) {
-            Vector jumpa = new Vector(0,-70);
-            a = a.add(jumpa);
-            jumped = false;
-        }
-        Vector drag = v.mul(-0.1);
-        a = a.add(drag);
-        v = v.add(a);
-        p = p.add(v);
-        onGround = p.getY() > GROUND_HEIGHT;
-        if (onGround) {
-            p = new Vector(p.getX(), GROUND_HEIGHT);
-            v = new Vector(v.getX(), 0);
-        }
-        direction = v.getX()>0 ?0:1;
-    }
-
-    public void move(double distance) {
+    public void move(double distance) { // diese Methode wird aus geführt, wenn der Spieler A oder D drückt und speichert den Input zwischen
         moved = distance;
     }
 
-    public void jump() {
-        if(onGround) {
+    public void jump() {  // diese Methode wird aus geführt, wenn der Spieler SPACE drückt und speichert den Input zwischen
+        if(onGround) { // der Sprung wird nur ausgeführt, wenn die Figur auf dem Boden steht
             jumped = true;
         }
     }
 
-
+    // Getter Methoden
     public int getX() {
         return (int) Math.round(p.getX());
     }
