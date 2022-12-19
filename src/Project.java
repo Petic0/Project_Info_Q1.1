@@ -9,7 +9,7 @@ public class Project extends Canvas implements KeyListener, ActionListener { //e
 
     public static final int WIDTH = 1600, HEIGHT = 900;
              //statische Variablen für die Fenstergröße
-    Animationsroboter robbi = new Animationsroboter (300,300); //Der Animationroboter (Die Spielfigur) wird erstellt an einer angegebenen Koordinate
+    Animationsroboter robbi = new Animationsroboter (400,300); //Der Animationroboter (Die Spielfigur) wird erstellt an einer angegebenen Koordinate
 
     public void paint(Graphics stift) { // Die von Canvas stammende Klasse paint, die man überschreiben muss und die für das Malen zuständlich ist
         robbi.map(stift); // das Malen der "map" (bis jetzt nur der Boden)
@@ -27,7 +27,7 @@ public class Project extends Canvas implements KeyListener, ActionListener { //e
         f.setSize(WIDTH, HEIGHT);  //Fenster Größe wird auf die vorher statisch festgelegten Variablen gesetzt
         //f.setLayout(null);
         f.setVisible(true);
-        Timer timer = new Timer(20, m); //Clock, die das Fenster immer updateted wird erstellt und gestartet
+        Timer timer = new Timer(15, m); //Clock, die das Fenster immer updateted wird erstellt und gestartet
         timer.start();
     }
     // die drei Standardmethoden von KeyListener werden hinzugefügt

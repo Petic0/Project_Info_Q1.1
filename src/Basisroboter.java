@@ -7,7 +7,7 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
     private int direction = 0; //Die Richtung in die die Spielfigur guckt bekommt eine Variable um die Spielfigut später richtig zu zeichnen können
     private double moved; // Variable für die Distanz der Bewegung (Wird beim KeyPressed Event verändert)
     private boolean jumped; // Variable die den KeyPressed "Space", Springen weitergibt
-    private boolean onGround; // Boolean das speichert, ob die Figur auf den Boden ist
+    private int onGround = 0; // Boolean das speichert, ob die Figur auf den Boden ist
 
     // Konstruktor
     public Basisroboter(int x, int y) { // Die Figur wird erstellt
@@ -16,7 +16,7 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
     }
 
     public void update() { // Die Methode "update", sie updatet die Positions der Figur
-        Vector a = new Vector(0, 2); // ein Vector für die Beschleunigung wird erstellt, es gibt immer eine Gravität
+        Vector a = new Vector(0, 5); // ein Vector für die Beschleunigung wird erstellt, es gibt immer eine Gravität
         if (moved != 0) { // falls die Figur sich nach rechts oder nach links bewegen soll
             Vector movea = new Vector(moved, 0); //neuer Beschleunigungsvektor mit neuen Inputs
             a = a.add(movea); // Der alte und neue werden addiert (.add)
@@ -31,10 +31,22 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
         a = a.add(drag); // dieser wird dem danach komplett geupdateten Beschleunigungs Veektor hinzugefügt
         v = v.add(a); // Beschleunigung wird auf die Geschwindigkeit addiert
         p = p.add(v); // Geschwindigkeit wird auf die Position addiert
-        onGround = p.getY() >= GROUND_HEIGHT || (p.getY() >= firstBox[1] && (p.getX()>firstBox[0] && p.getX() < (firstBox[0]+firstBox[2]))); // es wird gecheckt, ob der Spieler unter dem Boden ist
-        if (onGround) { // wenn die Figur auf dem Boden ist
-            p = new Vector(p.getX(), p.getY()-10); // dann kann sie nicht weiter runter und
+        if(p.getY() >= GROUND_HEIGHT) {
+            onGround = GROUND_HEIGHT;
+        } else if ((p.getY() >= firstBox[1]) && (p.getY()<= firstBox[1]+30) && (p.getX()>firstBox[0]) && (p.getX() < (firstBox[0]+firstBox[2]))) {
+            onGround = firstBox[1];
+        }else
+            onGround = 0;
+        if (onGround != 0) { // wenn die Figur auf dem Boden ist
+            p = new Vector(p.getX(), onGround); // dann kann sie nicht weiter runter und
             v = new Vector(v.getX(), 0); // ihre Beschleunigung auf der Y-Achse wird gestoppt
+        }
+        if(p.getX()>Project.WIDTH) {                 // Richtungswechsel und Teleport zur anderen Seite bei Übertreten des Randes
+           p = new Vector(0, p.getY());
+           v = new Vector(v.getX()*-1, 0);
+        } else if (p.getX()<0) {
+            p = new Vector(Project.WIDTH, p.getY());
+            v = new Vector(v.getX()*-1, 0);
         }
         direction = v.getX()>0 ?0:1; // die Richtung, in die er gucken soll, ist die Richtung in die er sich bewegt (positiv negativ / rechts links)
     }
@@ -44,7 +56,7 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
     }
 
     public void jump() {  // diese Methode wird aus geführt, wenn der Spieler SPACE drückt und speichert den Input zwischen
-        if(onGround) { // der Sprung wird nur ausgeführt, wenn die Figur auf dem Boden steht
+        if(onGround != 0) { // der Sprung wird nur ausgeführt, wenn die Figur auf dem Boden steht
             jumped = true;
         }
     }
