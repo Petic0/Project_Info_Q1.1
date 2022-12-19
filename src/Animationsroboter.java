@@ -1,8 +1,7 @@
 import java.awt.*; //Zeichen-Methoden werden importiert
+import java.lang.reflect.Array;
 
 public class Animationsroboter extends Basisroboter { //Die Klasse, die für das Zeichnen zuständig ist, sie erweitert den Basisroboter
-
-    int cubelenght = Project.HEIGHT/36;
     public Animationsroboter(int pXKoord, int pYKoord) { // Konstruktor
         super(pXKoord, pYKoord);
     }
@@ -11,6 +10,10 @@ public class Animationsroboter extends Basisroboter { //Die Klasse, die für das
     public void map(Graphics stift) { // Die Map wird gemalt
         stift.setColor(Color.DARK_GRAY);
         stift.fillRect(0,GROUND_HEIGHT,Project.WIDTH,Project.HEIGHT);
+        stift.setColor(Color.GREEN);
+        stift.fillRect(firstBox[0],firstBox[1],firstBox[2],firstBox[3]);
+        stift.setColor(Color.RED);
+        stift.fillRect(firstBox[0],firstBox[1],5,5);
     }
 
     public void zeichnen(Graphics stift) {

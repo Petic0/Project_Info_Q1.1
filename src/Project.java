@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 public class Project extends Canvas implements KeyListener, ActionListener { //extend Canvas für das Fenster & Bild, implement Key- und ActionListener für die Inputs
 
-    public static final int WIDTH = 1920, HEIGHT = 1080;
+    public static final int WIDTH = 1600, HEIGHT = 900;
              //statische Variablen für die Fenstergröße
     Animationsroboter robbi = new Animationsroboter (300,300); //Der Animationroboter (Die Spielfigur) wird erstellt an einer angegebenen Koordinate
 

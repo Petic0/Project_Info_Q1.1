@@ -1,5 +1,7 @@
 public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielfigur kümmert
-    public static final int GROUND_HEIGHT = Project.HEIGHT - 200; //Bodenhöhe wird festgelegt
+    public static final int GROUND_HEIGHT = Project.HEIGHT*7/10; //Bodenhöhe wird festgelegt
+    int[] firstBox = {Project.WIDTH/10,Project.HEIGHT*5/9,Project.WIDTH/5,Project.HEIGHT/10};
+    int cubelenght = Project.HEIGHT/36;
     private Vector p, v; //Vectoren für p(Position) und v(Velocity) werden erschaffen
 
     private int direction = 0; //Die Richtung in die die Spielfigur guckt bekommt eine Variable um die Spielfigut später richtig zu zeichnen können
@@ -14,7 +16,7 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
     }
 
     public void update() { // Die Methode "update", sie updatet die Positions der Figur
-        Vector a = new Vector(0, 7); // ein Vector für die Beschleunigung wird erstellt, es gibt immer eine Gravität
+        Vector a = new Vector(0, 2); // ein Vector für die Beschleunigung wird erstellt, es gibt immer eine Gravität
         if (moved != 0) { // falls die Figur sich nach rechts oder nach links bewegen soll
             Vector movea = new Vector(moved, 0); //neuer Beschleunigungsvektor mit neuen Inputs
             a = a.add(movea); // Der alte und neue werden addiert (.add)
@@ -29,9 +31,9 @@ public class Basisroboter { //Klasse, die sich um die Grundfunktionen der Spielf
         a = a.add(drag); // dieser wird dem danach komplett geupdateten Beschleunigungs Veektor hinzugefügt
         v = v.add(a); // Beschleunigung wird auf die Geschwindigkeit addiert
         p = p.add(v); // Geschwindigkeit wird auf die Position addiert
-        onGround = p.getY() > GROUND_HEIGHT; // es wird gecheckt, ob der Spieler unter dem Boden ist
+        onGround = p.getY() >= GROUND_HEIGHT || (p.getY() >= firstBox[1] && (p.getX()>firstBox[0] && p.getX() < (firstBox[0]+firstBox[2]))); // es wird gecheckt, ob der Spieler unter dem Boden ist
         if (onGround) { // wenn die Figur auf dem Boden ist
-            p = new Vector(p.getX(), GROUND_HEIGHT); // dann kann sie nicht weiter runter und
+            p = new Vector(p.getX(), p.getY()-10); // dann kann sie nicht weiter runter und
             v = new Vector(v.getX(), 0); // ihre Beschleunigung auf der Y-Achse wird gestoppt
         }
         direction = v.getX()>0 ?0:1; // die Richtung, in die er gucken soll, ist die Richtung in die er sich bewegt (positiv negativ / rechts links)
