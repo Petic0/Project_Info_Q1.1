@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03abe7e2-f2c5-445c-9bf4-67512f1ab75a" name="Changes" comment="Alles fertig auskommentiert!&#10;...gefühlt Buch geschrieben hahahah">
+    <list default="true" id="03abe7e2-f2c5-445c-9bf4-67512f1ab75a" name="Changes" comment="Zuhause 19.12&#10;Box verschönert&#10;Alle Werte ein bisschen angepasst, damit es besser funktioniert.&#10;Problem war, dass der Spieler manchmal durch die Box durchegefallen ist, da es keinen Tick gab, wo die Koordinaten mit denen der Bodenfläche der Box übereingestimmt haben. Habe jz einen größeren Spielraum (30p) eingefügt. Habe auch versucht mit der Tickrate rumzuspielen dies hat es aber nicht besser gemacht.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animationsroboter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animationsroboter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,11 @@
       <workItem from="1668593521062" duration="890000" />
       <workItem from="1669802594508" duration="4824000" />
       <workItem from="1670173177344" duration="59000" />
-      <workItem from="1670955036410" duration="3110000" />
+      <workItem from="1670955036410" duration="3748000" />
+      <workItem from="1671444315643" duration="94000" />
+      <workItem from="1671444419158" duration="2471000" />
+      <workItem from="1671447179328" duration="66000" />
+      <workItem from="1673456157838" duration="312000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1668197605591</created>
@@ -114,7 +117,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669807318697</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Auf der X Achse dynamisch">
+      <created>1670958204682</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670958204682</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Schule 14.12&#10;Schlechte Box">
+      <created>1671444484132</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671444484132</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Zuhause 19.12&#10;Box verschönert&#10;Alle Werte ein bisschen angepasst, damit es besser funktioniert.&#10;Problem war, dass der Spieler manchmal durch die Box durchegefallen ist, da es keinen Tick gab, wo die Koordinaten mit denen der Bodenfläche der Box übereingestimmt haben. Habe jz einen größeren Spielraum (30p) eingefügt. Habe auch versucht mit der Tickrate rumzuspielen dies hat es aber nicht besser gemacht.">
+      <created>1671446894508</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671446894508</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +172,10 @@
     <MESSAGE value="Going to sleep.&#10;Did physics.&#10;Fourth Commit." />
     <MESSAGE value="Fifth Commit&#10;-Map&#10;-Character" />
     <MESSAGE value="Alles fertig auskommentiert!&#10;...gefühlt Buch geschrieben hahahah" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alles fertig auskommentiert!&#10;...gefühlt Buch geschrieben hahahah" />
+    <MESSAGE value="Auf der X Achse dynamisch" />
+    <MESSAGE value="Schule 14.12&#10;Schlechte Box" />
+    <MESSAGE value="Zuhause 19.12&#10;Box verschönert&#10;Alle Werte ein bisschen angepasst, damit es besser funktioniert.&#10;Problem war, dass der Spieler manchmal durch die Box durchegefallen ist, da es keinen Tick gab, wo die Koordinaten mit denen der Bodenfläche der Box übereingestimmt haben. Habe jz einen größeren Spielraum (30p) eingefügt. Habe auch versucht mit der Tickrate rumzuspielen dies hat es aber nicht besser gemacht." />
+    <option name="LAST_COMMIT_MESSAGE" value="Zuhause 19.12&#10;Box verschönert&#10;Alle Werte ein bisschen angepasst, damit es besser funktioniert.&#10;Problem war, dass der Spieler manchmal durch die Box durchegefallen ist, da es keinen Tick gab, wo die Koordinaten mit denen der Bodenfläche der Box übereingestimmt haben. Habe jz einen größeren Spielraum (30p) eingefügt. Habe auch versucht mit der Tickrate rumzuspielen dies hat es aber nicht besser gemacht." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Project_Info_Q1_1$Project.ic" NAME="Project Coverage Results" MODIFIED="1668200697177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
